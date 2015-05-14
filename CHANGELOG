@@ -1,0 +1,12 @@
+// =============================================================================
+// PrmFile - Parametr file parsing and manipulation library
+// -----------------------------------------------------------------------------
+
+2008-05-19:
+    bug fix in prmfile_read for AIX compilers
+
+2008-03-28:
+    minor changes introduced by CSmallString chnage
+    CMakeList.txt   some setup entry could be read from cmake cache and 
+                    therefore they can be changed by user
+
