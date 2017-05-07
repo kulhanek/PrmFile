@@ -135,6 +135,7 @@ public:
 // get values by key ----------------------------------------------------------
     bool GetIntegerByKey(const CSmallString& name, int& value);
     bool GetStringByKey(const CSmallString& name, CSmallString& value);
+    bool GetStringByKey(const std::string& name, std::string& value);
     bool GetFloatByKey(const CSmallString& name, float& value);
     bool GetDoubleByKey(const CSmallString& name, double& value);
     bool GetLogicalByKey(const CSmallString& name, bool& value);

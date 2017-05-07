@@ -806,6 +806,17 @@ bool CPrmFile::GetIntegerByKey(const CSmallString& name, int& value)
 
 //------------------------------------------------------------------------------
 
+bool CPrmFile::GetStringByKey(const std::string& name, std::string& value)
+{
+    CSmallString iname = name;
+    CSmallString ivalue = value;
+    bool ret = GetStringByKey(iname,ivalue);
+    value = ivalue;
+    return(ret);
+}
+
+//------------------------------------------------------------------------------
+
 bool CPrmFile::GetStringByKey(const CSmallString& name, CSmallString& value)
 {
     CSmallString svalue;
