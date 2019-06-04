@@ -997,6 +997,30 @@ logical function prmfile_get_line(prmfile,line)
 
 end function prmfile_get_line
 
+!-------------------------------------------------------------------------------
+
+logical function prmfile_get_current_line(prmfile,line)
+
+ implicit none
+ type(PRMFILE_TYPE),intent(inout)   :: prmfile
+ character(*), intent(out)          :: line
+ !------------------------------------------------------------------------------
+
+ prmfile%FieldPosition = 0
+
+ !if there's a line
+ if(associated(prmfile%CurrentLine)) then
+    line = prmfile%CurrentLine%Text
+    prmfile%CurrentLine%Processed = .true.
+    prmfile_get_current_line = .true.
+ else
+    line = ''
+    prmfile_get_current_line = .false.
+ end if
+ return
+
+end function prmfile_get_current_line
+
 !===============================================================================
 !-------------------------------------------------------------------------------
 !===============================================================================
