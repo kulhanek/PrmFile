@@ -789,7 +789,7 @@ logical function prmfile_get_integer_by_key(prmfile,key,value)
  implicit none
  type(PRMFILE_TYPE),intent(inout)   :: prmfile
  character(*)                       :: key
- integer, intent(out)               :: value
+ integer                            :: value
  !------------------------------------------------
  character(len=PRMFILE_MAX_VALUE)   :: locvalue
  integer                            :: stat
@@ -822,7 +822,7 @@ logical function prmfile_get_real_by_key(prmfile,key,value)
  implicit none
  type(PRMFILE_TYPE),intent(inout)   :: prmfile
  character(*)                       :: key
- real, intent(out)                  :: value
+ real                               :: value
  !------------------------------------------------
  character(len=PRMFILE_MAX_VALUE)   :: locvalue
  integer                            :: stat
@@ -855,7 +855,7 @@ logical function prmfile_get_real8_by_key(prmfile,key,value)
  implicit none
  type(PRMFILE_TYPE),intent(inout)   :: prmfile
  character(*)                       :: key
- real(8), intent(out)               :: value
+ real(8)                            :: value
  !------------------------------------------------
  character(len=PRMFILE_MAX_VALUE)   :: locvalue
  integer                            :: stat
@@ -888,7 +888,7 @@ logical function prmfile_get_string_by_key(prmfile,key,value)
  implicit none
  type(PRMFILE_TYPE),intent(inout)   :: prmfile
  character(*)                       :: key
- character(*), intent(out)          :: value
+ character(*)                       :: value
  !------------------------------------------------
  character(len=PRMFILE_MAX_VALUE)   :: locvalue
  integer                            :: sbeg,send
@@ -937,7 +937,7 @@ logical function prmfile_get_logical_by_key(prmfile,key,value)
  implicit none
  type(PRMFILE_TYPE),intent(inout)   :: prmfile
  character(*)                       :: key
- logical, intent(out)               :: value
+ logical                            :: value
  !------------------------------------------------
  character(len=PRMFILE_MAX_VALUE)   :: locvalue
  ! -----------------------------------------------------------------------------
@@ -978,7 +978,7 @@ logical function prmfile_get_line(prmfile,line)
 
  implicit none
  type(PRMFILE_TYPE),intent(inout)   :: prmfile
- character(*), intent(out)          :: line
+ character(*)                       :: line
  !------------------------------------------------------------------------------
 
  prmfile%FieldPosition = 0
@@ -1003,7 +1003,7 @@ logical function prmfile_get_current_line(prmfile,line)
 
  implicit none
  type(PRMFILE_TYPE),intent(inout)   :: prmfile
- character(*), intent(out)          :: line
+ character(*)                       :: line
  !------------------------------------------------------------------------------
 
  prmfile%FieldPosition = 0
@@ -1030,7 +1030,7 @@ integer function prmfile_max_enum(prmfile,section,count_out)
  implicit none
  type(PRMFILE_TYPE),intent(inout)   :: prmfile
  character(*),intent(in)            :: section
- integer, optional, intent(out)     :: count_out
+ integer, optional                  :: count_out
  !------------------------------------------------
  integer                            :: max_enum, enum, count
  logical                            :: dummy
@@ -1063,7 +1063,7 @@ logical function prmfile_get_int_int(prmfile,key,value)
  implicit none
  type(PRMFILE_TYPE),intent(inout)   ::  prmfile
  integer,intent(out)                ::  key
- integer, intent(out)               ::  value
+ integer                            ::  value
  !------------------------------------------------
  character(len=PRMFILE_MAX_LINE)    ::  line
  integer                            ::  stat
@@ -1086,7 +1086,7 @@ logical function prmfile_get_int(prmfile,value)
 
  implicit none
  type(PRMFILE_TYPE),intent(inout)   :: prmfile
- integer, intent(out)               :: value
+ integer                            :: value
  !------------------------------------------------
  character(len=PRMFILE_MAX_LINE)    :: line
  integer                            :: stat
@@ -1159,7 +1159,7 @@ logical function prmfile_get_field_by_key(prmfile,field)
 
  implicit none
  type(PRMFILE_TYPE),intent(inout)   :: prmfile
- character(*), intent(out)          :: field
+ character(*)                       :: field
  !------------------------------------------------
  character(len=2)                   :: ws
  integer                            :: slen,istart,iend
@@ -1210,7 +1210,7 @@ logical function prmfile_get_field(prmfile,field)
 
  implicit none
  type(PRMFILE_TYPE),intent(inout)   :: prmfile
- character(*), intent(out)          :: field
+ character(*)                       :: field
  !------------------------------------------------
  character(len=2)                   :: ws
  integer                            :: slen,istart,iend
@@ -1267,7 +1267,7 @@ logical function prmfile_get_field_on_line(prmfile,field)
 
  implicit none
  type(PRMFILE_TYPE),intent(inout)   :: prmfile
- character(*), intent(out)          :: field
+ character(*)                       :: field
  !------------------------------------------------
  character(len=2)                   :: ws
  integer                            :: slen,istart,iend
