@@ -36,7 +36,7 @@ contains
 logical function prmfile_parse(prmfile)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
+ type(PRMFILE_TYPE)                 :: prmfile
  ! -----------------------------------------------
  character(len=PRMFILE_MAX_LINE)    :: line
  integer                            :: lineid, stat
@@ -80,7 +80,7 @@ end function prmfile_parse
 logical function prmfile_parse_line(prmfile,lineid,line)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
+ type(PRMFILE_TYPE)                 :: prmfile
  integer                            :: lineid
  character(len=PRMFILE_MAX_LINE)    :: line
  ! -----------------------------------------------
@@ -143,7 +143,7 @@ end function prmfile_parse_line
 logical function prmfile_add_group(prmfile,lineid,name)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)  :: prmfile
+ type(PRMFILE_TYPE)                :: prmfile
  integer                            :: lineid
  character(*)                       :: name
  ! -----------------------------------------------
@@ -199,7 +199,7 @@ end function prmfile_add_group
 logical function prmfile_add_section(prmfile,lineid,name)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
+ type(PRMFILE_TYPE)                 :: prmfile
  integer                            :: lineid
  character(*)                       :: name
  ! -----------------------------------------------
@@ -262,7 +262,7 @@ end function prmfile_add_section
 logical function prmfile_add_line(prmfile,lineid,line)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
+ type(PRMFILE_TYPE)                 :: prmfile
  integer                            :: lineid
  character(*)                       :: line
  ! -----------------------------------------------
@@ -379,7 +379,7 @@ end function prmfile_add_line
 subroutine add_error(prmfile,lineid,error)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
+ type(PRMFILE_TYPE)                 :: prmfile
  integer                            :: lineid
  character(*)                       :: error
  !------------------------------------------------------------------------------
@@ -399,7 +399,7 @@ end subroutine add_error
 logical function prmfile_find_key(prmfile,key,value)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)       :: prmfile
+ type(PRMFILE_TYPE)                     :: prmfile
  character(*), intent(in)               :: key
  character(*), intent(out)              :: value
  !------------------------------------------------
@@ -450,7 +450,7 @@ end function prmfile_find_key
 subroutine prmfile_set_kline_as_processed(prmfile)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)       :: prmfile
+ type(PRMFILE_TYPE)                     :: prmfile
  ! -----------------------------------------------------------------------------
 
  if(associated(prmfile%CurrentLine)) then

@@ -37,7 +37,7 @@ contains
 subroutine prmfile_init(prmfile)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
+ type(PRMFILE_TYPE)                 :: prmfile
  !------------------------------------------------------------------------------
 
  prmfile%FirstGroup      => NULL()
@@ -58,8 +58,8 @@ end subroutine prmfile_init
 logical function prmfile_read(prmfile,filename)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
- character(*),intent(in)            :: filename
+ type(PRMFILE_TYPE)                 :: prmfile
+ character(*)                       :: filename
  ! -----------------------------------------------
  integer                            :: stat
  !------------------------------------------------------------------------------
@@ -108,7 +108,7 @@ end function prmfile_read
 subroutine prmfile_clear(prmfile)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
+ type(PRMFILE_TYPE)                 :: prmfile
  ! -----------------------------------------------
  type(GROUP_TYPE), pointer          :: pgroup,cgroup
  type(SECTION_TYPE), pointer        :: psection,csection
@@ -169,8 +169,8 @@ end subroutine prmfile_clear
 subroutine prmfile_dump(prmfile,ounit,unprocessed)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
- integer,intent(in)                 :: ounit
+ type(PRMFILE_TYPE)                 :: prmfile
+ integer                            :: ounit
  logical, intent(in), optional      :: unprocessed
  ! -----------------------------------------------
  type(GROUP_TYPE), pointer          :: pgroup
@@ -246,8 +246,8 @@ end subroutine prmfile_dump
 subroutine prmfile_dump_group(prmfile,ounit,gname,unprocessed)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)       :: prmfile
- integer,intent(in)                     :: ounit
+ type(PRMFILE_TYPE)                     :: prmfile
+ integer                                :: ounit
  character(*),optional                  :: gname
  logical, intent(in), optional          :: unprocessed
  ! -----------------------------------------------
@@ -331,7 +331,7 @@ end subroutine prmfile_dump_group
 integer function prmfile_count_ulines(prmfile,gname)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)       :: prmfile
+ type(PRMFILE_TYPE)                     :: prmfile
  character(*),optional                  :: gname
  ! -----------------------------------------------
  type(GROUP_TYPE), pointer              :: pgroup
@@ -391,7 +391,7 @@ end function prmfile_count_ulines
 logical function prmfile_first_group(prmfile)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)           :: prmfile
+ type(PRMFILE_TYPE)                         :: prmfile
  !------------------------------------------------------------------------------
 
  nullify(prmfile%CurrentGroup)
@@ -425,8 +425,8 @@ end function prmfile_first_group
 logical function prmfile_open_group(prmfile,name)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)           :: prmfile
- character(*),intent(in)                    :: name
+ type(PRMFILE_TYPE)                         :: prmfile
+ character(*)                               :: name
  !------------------------------------------------
  character(len=PRMFILE_MAX_GROUP_NAME)      :: uname
  character(len=PRMFILE_MAX_GROUP_NAME)      :: lname
@@ -467,7 +467,7 @@ end function prmfile_open_group
 logical function prmfile_next_group(prmfile)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
+ type(PRMFILE_TYPE)                 :: prmfile
  !------------------------------------------------------------------------------
 
  if( associated(prmfile%CurrentGroup) ) then
@@ -504,7 +504,7 @@ end function prmfile_next_group
 integer function prmfile_count_group(prmfile)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
+ type(PRMFILE_TYPE)                 :: prmfile
  !------------------------------------------------
  type(SECTION_TYPE), pointer        :: psection
  !------------------------------------------------------------------------------
@@ -534,7 +534,7 @@ end function prmfile_count_group
 logical function prmfile_get_group_name(prmfile,name)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
+ type(PRMFILE_TYPE)                 :: prmfile
  character(*)                       :: name
  !------------------------------------------------------------------------------
 
@@ -557,7 +557,7 @@ end function prmfile_get_group_name
 logical function prmfile_first_section(prmfile)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)           :: prmfile
+ type(PRMFILE_TYPE)                         :: prmfile
  !------------------------------------------------------------------------------
 
  nullify(prmfile%CurrentSection)
@@ -590,8 +590,8 @@ end function prmfile_first_section
 logical function prmfile_open_section(prmfile,name)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)           :: prmfile
- character(*),intent(in)                    :: name
+ type(PRMFILE_TYPE)                         :: prmfile
+ character(*)                               :: name
  !------------------------------------------------
  character(len=PRMFILE_MAX_SECTION_NAME)    :: uname
  character(len=PRMFILE_MAX_SECTION_NAME)    :: lname
@@ -631,8 +631,8 @@ end function prmfile_open_section
 integer function prmfile_open_section_and_count(prmfile,name)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
- character(*),intent(in)            :: name
+ type(PRMFILE_TYPE)                 :: prmfile
+ character(*)                       :: name
  !------------------------------------------------------------------------------
 
  if(prmfile_open_section(prmfile,name)) then
@@ -654,7 +654,7 @@ end function prmfile_open_section_and_count
 logical function prmfile_next_section(prmfile)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
+ type(PRMFILE_TYPE)                 :: prmfile
  !------------------------------------------------------------------------------
 
  if( associated(prmfile%CurrentSection) ) then
@@ -687,7 +687,7 @@ end function prmfile_next_section
 integer function prmfile_count_section(prmfile)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
+ type(PRMFILE_TYPE)                 :: prmfile
  !------------------------------------------------
  type(LINE_TYPE), pointer           :: pline
  !------------------------------------------------------------------------------
@@ -717,7 +717,7 @@ end function prmfile_count_section
 logical function prmfile_get_section_name(prmfile,name)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
+ type(PRMFILE_TYPE)                 :: prmfile
  character(*)                       :: name
  !------------------------------------------------------------------------------
 
@@ -740,7 +740,7 @@ end function prmfile_get_section_name
 logical function prmfile_first_line(prmfile)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)           :: prmfile
+ type(PRMFILE_TYPE)                         :: prmfile
  !------------------------------------------------------------------------------
 
  nullify(prmfile%CurrentLine)
@@ -763,7 +763,7 @@ end function prmfile_first_line
 logical function prmfile_next_line(prmfile)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)           :: prmfile
+ type(PRMFILE_TYPE)                         :: prmfile
  !------------------------------------------------------------------------------
 
  prmfile%FieldPosition = 0
@@ -787,7 +787,7 @@ end function prmfile_next_line
 logical function prmfile_get_integer_by_key(prmfile,key,value)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
+ type(PRMFILE_TYPE)                 :: prmfile
  character(*)                       :: key
  integer                            :: value
  !------------------------------------------------
@@ -820,7 +820,7 @@ end function prmfile_get_integer_by_key
 logical function prmfile_get_real_by_key(prmfile,key,value)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
+ type(PRMFILE_TYPE)                 :: prmfile
  character(*)                       :: key
  real                               :: value
  !------------------------------------------------
@@ -853,7 +853,7 @@ end function prmfile_get_real_by_key
 logical function prmfile_get_real8_by_key(prmfile,key,value)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
+ type(PRMFILE_TYPE)                 :: prmfile
  character(*)                       :: key
  real(8)                            :: value
  !------------------------------------------------
@@ -886,7 +886,7 @@ end function prmfile_get_real8_by_key
 logical function prmfile_get_string_by_key(prmfile,key,value)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
+ type(PRMFILE_TYPE)                 :: prmfile
  character(*)                       :: key
  character(*)                       :: value
  !------------------------------------------------
@@ -935,7 +935,7 @@ end function prmfile_get_string_by_key
 logical function prmfile_get_logical_by_key(prmfile,key,value)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
+ type(PRMFILE_TYPE)                 :: prmfile
  character(*)                       :: key
  logical                            :: value
  !------------------------------------------------
@@ -977,7 +977,7 @@ end function prmfile_get_logical_by_key
 logical function prmfile_get_line(prmfile,line)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
+ type(PRMFILE_TYPE)                 :: prmfile
  character(*)                       :: line
  !------------------------------------------------------------------------------
 
@@ -1002,7 +1002,7 @@ end function prmfile_get_line
 logical function prmfile_get_current_line(prmfile,line)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
+ type(PRMFILE_TYPE)                 :: prmfile
  character(*)                       :: line
  !------------------------------------------------------------------------------
 
@@ -1028,8 +1028,8 @@ end function prmfile_get_current_line
 integer function prmfile_max_enum(prmfile,section,count_out)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
- character(*),intent(in)            :: section
+ type(PRMFILE_TYPE)                 :: prmfile
+ character(*)                       :: section
  integer, optional                  :: count_out
  !------------------------------------------------
  integer                            :: max_enum, enum, count
@@ -1061,7 +1061,7 @@ end function prmfile_max_enum
 logical function prmfile_get_int_int(prmfile,key,value)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   ::  prmfile
+ type(PRMFILE_TYPE)                 ::  prmfile
  integer,intent(out)                ::  key
  integer                            ::  value
  !------------------------------------------------
@@ -1085,7 +1085,7 @@ end function prmfile_get_int_int
 logical function prmfile_get_int(prmfile,value)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
+ type(PRMFILE_TYPE)                 :: prmfile
  integer                            :: value
  !------------------------------------------------
  character(len=PRMFILE_MAX_LINE)    :: line
@@ -1113,7 +1113,7 @@ end function prmfile_get_int
 logical function prmfile_init_field_by_key(prmfile,key)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
+ type(PRMFILE_TYPE)                 :: prmfile
  character(*)                       :: key
  !------------------------------------------------
  character(len=2)                   :: ws
@@ -1158,7 +1158,7 @@ end function prmfile_init_field_by_key
 logical function prmfile_get_field_by_key(prmfile,field)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
+ type(PRMFILE_TYPE)                 :: prmfile
  character(*)                       :: field
  !------------------------------------------------
  character(len=2)                   :: ws
@@ -1209,7 +1209,7 @@ end function prmfile_get_field_by_key
 logical function prmfile_get_field(prmfile,field)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
+ type(PRMFILE_TYPE)                 :: prmfile
  character(*)                       :: field
  !------------------------------------------------
  character(len=2)                   :: ws
@@ -1266,7 +1266,7 @@ end function prmfile_get_field
 logical function prmfile_get_field_on_line(prmfile,field)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
+ type(PRMFILE_TYPE)                 :: prmfile
  character(*)                       :: field
  !------------------------------------------------
  character(len=2)                   :: ws
@@ -1327,7 +1327,7 @@ end function prmfile_get_field_on_line
 subroutine prmfile_set_sec_as_processed(prmfile)
 
  implicit none
- type(PRMFILE_TYPE),intent(inout)   :: prmfile
+ type(PRMFILE_TYPE)                 :: prmfile
  ! --------------------------------------------
  type(LINE_TYPE), pointer           :: pline
  !-----------------------------------------------------------------------------
