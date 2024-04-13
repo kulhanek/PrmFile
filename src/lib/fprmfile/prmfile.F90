@@ -1319,6 +1319,60 @@ logical function prmfile_get_field_on_line(prmfile,field)
 end function prmfile_get_field_on_line
 
 !===============================================================================
+!-------------------------------------------------------------------------------
+!===============================================================================
+
+logical function prmfile_get_string_value_on_line(prmfile,value)
+
+ implicit none
+ type(PRMFILE_TYPE)                 :: prmfile
+ character(*)                       :: value
+ !------------------------------------------------
+ character(len=PRMFILE_MAX_VALUE)      :: locvalue
+ integer                               :: sbeg,send
+ character(len=PRMFILE_MAX_KEY_NAME)   :: lkey
+ ! -----------------------------------------------------------------------------
+
+ ! do not change value if default argument is not provided
+ prmfile_get_string_value_on_line = .false.
+
+ ! do we have line?
+ if( .not. associated(prmfile%CurrentLine) ) then
+    return      ! no data to process
+ end if
+
+ ! get value --------------------------------------
+ if( .not. prmfile_split_line(prmfile%CurrentLine%Text,lkey,locvalue) ) then
+    return
+ end if
+
+ sbeg = 1
+ send = len(trim(locvalue))
+
+ ! handle quotations
+ if( send .ge. 2 ) then
+    if( (locvalue(1:1) .eq. '''') .and. (locvalue(send:send) .eq. '''')  ) then
+        sbeg = sbeg + 1
+        send = send - 1
+    else if( (locvalue(1:1) .eq. '"') .and. (locvalue(send:send) .eq. '"') ) then
+        sbeg = sbeg + 1
+        send = send - 1
+    end if
+ end if
+
+ if( sbeg .le. send ) then
+    value = locvalue(sbeg:send)
+ else
+    value = ''
+ end if
+
+ call prmfile_set_kline_as_processed(prmfile)
+ prmfile_get_string_value_on_line = .true.
+ return
+
+end function prmfile_get_string_value_on_line
+
+!===============================================================================
 ! subroutine prmfile_set_sec_as_processed(prmfile)
 ! ------------------------------------------------------------------------------
 ! set all lines in current section as processed
